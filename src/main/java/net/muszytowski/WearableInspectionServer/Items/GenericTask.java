@@ -1,6 +1,7 @@
 package net.muszytowski.WearableInspectionServer.Items;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,9 +14,11 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.hibernate.mapping.Collection;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
 @Entity
+@JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")
 public abstract class GenericTask {
 	@Id 
     @Column(nullable = false)
@@ -32,12 +35,14 @@ public abstract class GenericTask {
 	
 	private Date date;
 	
+	private int weight;
+	
 	@ManyToOne
     private GenericTask parent;
 	
-	@OneToMany(mappedBy="attachment",targetEntity=Attachment.class,
+	@OneToMany(mappedBy="resourceIdentifier",targetEntity=Attachment.class,
 		       fetch=FetchType.EAGER)
-	private Collection attachments;
+	private List<Attachment> attachments;
 	
 	/**
 	 * Empty constructor (POJO)
@@ -134,5 +139,13 @@ public abstract class GenericTask {
 	 */
 	public void setParent(GenericTask parent) {
 		this.parent = parent;
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
 	}
 }

@@ -2,7 +2,11 @@ package net.muszytowski.WearableInspectionServer.Items;
 
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
+
 @Entity
+@JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")
 public class IntegerTask extends GenericTask {
 	private Integer value;
 

@@ -1,29 +1,32 @@
 package net.muszytowski.WearableInspectionServer.Items;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import org.hibernate.mapping.Collection;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
 @Entity
+@JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")
 public class ListTask extends GenericTask {
 
 	@OneToOne(optional=true)
-    @JoinColumn(name = "option") 
-	private long value;
+	private ListOption value;
 	
-	@OneToMany(mappedBy="option",targetEntity=ListOption.class,
+	@OneToMany(mappedBy="resourceIdentifier",targetEntity=ListOption.class,
 		       fetch=FetchType.EAGER)
-	private Collection options;
+	private List<ListOption> options;
 
-	public long getValue() {
+	public ListOption getValue() {
 		return value;
 	}
 
-	public void setValue(long value) {
+	public void setValue(ListOption value) {
 		this.value = value;
 	}
 	
