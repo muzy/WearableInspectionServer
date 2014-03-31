@@ -2,21 +2,31 @@ package net.muszytowski.WearableInspectionServer;
 
 import java.sql.Date;
 
+import javax.annotation.Resource;
+
 import net.muszytowski.WearableInspectionServer.items.Attachment;
 import net.muszytowski.WearableInspectionServer.items.InspectionTree;
 import net.muszytowski.WearableInspectionServer.items.Status;
 import net.muszytowski.WearableInspectionServer.items.Task;
+import net.muszytowski.WearableInspectionServer.repositories.TaskRepository;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Controller
 @Transactional
 public class WearableController {
-
+	
+	private @Autowired TaskRepository taskRepository;
+	
 	/**
 	 * Set InspectionTree
 	 * 
@@ -25,7 +35,7 @@ public class WearableController {
 	@RequestMapping("/setInspectionTree")
 	public @ResponseBody
 	Status setInspectionTree(
-			@RequestParam(value = "InspectionTree", required = true) InspectionTree inspectionTree) {
+			@RequestParam(value = "Insrc/main/java/net/muszytowski/WearableInspectionServer/items/InspectionTree.javaspectionTree", required = true) InspectionTree inspectionTree) {
 		return null;
 	}
 
@@ -65,7 +75,7 @@ public class WearableController {
 	public @ResponseBody
 	Task getTask(
 			@RequestParam(value = "Task", required = true) Long id) {
-		return null;
+		return taskRepository.findOne(id);
 	}
 	
 	/**
@@ -76,8 +86,10 @@ public class WearableController {
 	@RequestMapping("/setTask")
 	public @ResponseBody
 	Task setTask(
-			@RequestParam(value = "Task", required = true) Task task) {
-		return null;
+			@RequestParam(value = "Task", required = true) String taskString) throws Exception {
+		Task task = new ObjectMapper().readValue(taskString.getBytes(), Task.class);
+		System.out.println("TASK");
+		return taskRepository.save(task);
 	}
 	
 	/**
