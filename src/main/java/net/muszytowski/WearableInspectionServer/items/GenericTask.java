@@ -4,13 +4,19 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -19,12 +25,18 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
 @Entity
+@Table(name = "Tasks")
 @JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")
+@DiscriminatorColumn(name="type", discriminatorType = DiscriminatorType.INTEGER)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class GenericTask {
 	@Id 
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long resourceIdentifier;
+	
+	@Column(updatable = false, insertable = false)
+	private int type;
 	
 	@Size(min=2, max=255)
 	@NotNull

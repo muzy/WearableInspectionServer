@@ -5,6 +5,7 @@ import java.sql.Date;
 import javax.annotation.Resource;
 
 import net.muszytowski.WearableInspectionServer.items.Attachment;
+import net.muszytowski.WearableInspectionServer.items.GenericTask;
 import net.muszytowski.WearableInspectionServer.items.InspectionTree;
 import net.muszytowski.WearableInspectionServer.items.Status;
 import net.muszytowski.WearableInspectionServer.items.Task;
@@ -73,7 +74,7 @@ public class WearableController {
 	 */
 	@RequestMapping("/getTask")
 	public @ResponseBody
-	Task getTask(
+	GenericTask getTask(
 			@RequestParam(value = "Task", required = true) Long id) {
 		return taskRepository.findOne(id);
 	}
@@ -86,9 +87,8 @@ public class WearableController {
 	@RequestMapping("/setTask")
 	public @ResponseBody
 	Task setTask(
-			@RequestParam(value = "Task", required = true) String taskString) throws Exception {
+			@RequestParam(value = "Task", required = true) String taskString) throws Exception 	{
 		Task task = new ObjectMapper().readValue(taskString.getBytes(), Task.class);
-		System.out.println("TASK");
 		return taskRepository.save(task);
 	}
 	
