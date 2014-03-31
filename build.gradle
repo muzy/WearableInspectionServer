@@ -16,6 +16,10 @@ apply plugin: 'spring-boot'
 jar {
     baseName = 'inspectionServer'
     version =  '0.1.0'
+
+    from ('src/main/java/') {
+      include 'application.properties'
+    }
 }
 
 repositories {
