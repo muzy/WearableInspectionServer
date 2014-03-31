@@ -1,6 +1,4 @@
-package net.muszytowski.WearableInspectionServer.Items;
-
-import java.sql.Date;
+package net.muszytowski.WearableInspectionServer.items;
 
 import javax.persistence.Entity;
 
@@ -9,19 +7,17 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
 @Entity
 @JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")
-public class DateTask extends GenericTask {
+public class StringTask extends GenericTask {
+	private String value;
 
-	private Date value;
-
-	public DateTask(){}
+	public StringTask(){}
 	
-	public Date getValue() {
+	public String getValue() {
 		return value;
 	}
 
-	public void setValue(Date value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
-	
 	
 }

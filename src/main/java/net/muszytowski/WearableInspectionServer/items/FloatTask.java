@@ -1,4 +1,4 @@
-package net.muszytowski.WearableInspectionServer.Items;
+package net.muszytowski.WearableInspectionServer.items;
 
 import javax.persistence.Entity;
 
@@ -7,16 +7,17 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
 @Entity
 @JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")
-public class StringTask extends GenericTask {
-	private String value;
+public class FloatTask extends GenericTask {
 
-	public StringTask(){}
+	private Float value;
 	
-	public String getValue() {
+	public FloatTask(){}
+
+	public Float getValue() {
 		return value;
 	}
 
-	public void setValue(String value) {
+	public void setValue(Float value) {
 		this.value = value;
 	}
 	

@@ -1,4 +1,4 @@
-package net.muszytowski.WearableInspectionServer.Items;
+package net.muszytowski.WearableInspectionServer.items;
 
 import java.util.List;
 

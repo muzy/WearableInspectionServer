@@ -1,4 +1,4 @@
-package net.muszytowski.WearableInspectionServer.Items;
+package net.muszytowski.WearableInspectionServer.items;
 
 import java.sql.Date;
 import java.util.List;
@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
@@ -38,6 +39,7 @@ public abstract class GenericTask {
 	private int weight;
 	
 	@ManyToOne
+	@JsonBackReference
     private GenericTask parent;
 	
 	@OneToMany(mappedBy="resourceIdentifier",targetEntity=Attachment.class,

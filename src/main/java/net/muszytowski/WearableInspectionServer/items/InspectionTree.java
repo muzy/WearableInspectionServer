@@ -1,6 +1,5 @@
-package net.muszytowski.WearableInspectionServer.Items;
+package net.muszytowski.WearableInspectionServer.items;
 
-import java.awt.List;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -14,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
@@ -23,9 +24,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 public class InspectionTree {
 	
 	@ManyToOne
+	@JsonBackReference
     private InspectionTree parent;
 		
 	@OneToMany(mappedBy="parent", fetch=FetchType.EAGER)
+	@JsonManagedReference
 	private Collection<InspectionTree> children;
 			
 	@Id 
