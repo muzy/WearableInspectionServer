@@ -8,11 +8,13 @@ import net.muszytowski.WearableInspectionServer.items.Status;
 import net.muszytowski.WearableInspectionServer.items.Task;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@Transactional
 public class WearableController {
 
 	/**

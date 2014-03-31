@@ -23,8 +23,12 @@ public class Attachment {
 	
 	public Attachment(){}
 	
-	public long getResourceIdentifier(){
+	public Long getResourceIdentifier(){
 		return this.resourceIdentifier;
+	}
+	
+	public void setResourceIdentifier(Long id) {
+		this.resourceIdentifier = id;
 	}
 	
 	/**

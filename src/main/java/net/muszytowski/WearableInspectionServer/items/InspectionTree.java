@@ -80,14 +80,14 @@ public class InspectionTree {
 	/**
 	 * @return the resourceIdentifier
 	 */
-	public long getResourceIdentifier() {
+	public Long getResourceIdentifier() {
 		return resourceIdentifier;
 	}
 
 	/**
 	 * @param resourceIdentifier the resourceIdentifier to set
 	 */
-	public void setResourceIdentifier(long resourceIdentifier) {
+	public void setResourceIdentifier(Long resourceIdentifier) {
 		this.resourceIdentifier = resourceIdentifier;
 	}
 
