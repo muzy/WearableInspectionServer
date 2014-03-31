@@ -16,7 +16,7 @@ public class Attachment {
 	@Id 
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private long resourceIdentifier;
+	private Long resourceIdentifier;
 	private String name;
 	private String type;
 	private byte[] content;

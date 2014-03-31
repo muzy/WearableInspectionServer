@@ -34,7 +34,7 @@ public class InspectionTree {
 	@Id 
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private long resourceIdentifier;
+	private Long resourceIdentifier;
 	
 	@OneToOne
 	private Task data;
