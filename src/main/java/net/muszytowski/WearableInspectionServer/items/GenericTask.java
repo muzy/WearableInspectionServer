@@ -24,7 +24,7 @@ public abstract class GenericTask {
 	@Id 
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private long resourceIdentifier;
+	private Long resourceIdentifier;
 	
 	@Size(min=2, max=255)
 	@NotNull

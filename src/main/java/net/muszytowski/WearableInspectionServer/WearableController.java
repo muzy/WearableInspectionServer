@@ -62,7 +62,7 @@ public class WearableController {
 	@RequestMapping("/getTask")
 	public @ResponseBody
 	Task getTask(
-			@RequestParam(value = "Task", required = true) long id) {
+			@RequestParam(value = "Task", required = true) Long id) {
 		return null;
 	}
 	

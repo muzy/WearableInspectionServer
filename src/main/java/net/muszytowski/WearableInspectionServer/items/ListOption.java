@@ -16,7 +16,7 @@ public class ListOption {
 	@Id 
 	@Column(nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long resourceIdentifier;
+	private Long resourceIdentifier;
 	private String value;
 	
 	public ListOption(){};
