@@ -1,8 +1,6 @@
 package net.muszytowski.WearableInspectionServer;
 
-import java.sql.Date;
-
-import javax.annotation.Resource;
+import java.util.Random;
 
 import net.muszytowski.WearableInspectionServer.items.Attachment;
 import net.muszytowski.WearableInspectionServer.items.GenericTask;
@@ -11,9 +9,8 @@ import net.muszytowski.WearableInspectionServer.items.Status;
 import net.muszytowski.WearableInspectionServer.items.Task;
 import net.muszytowski.WearableInspectionServer.repositories.TaskRepository;
 
-import org.hibernate.SessionFactory;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,7 +56,8 @@ public class WearableController {
 		tree1.addChild(tree2);
 		Task task1 = new Task();
 		task1.setAuthor("muzzzzy");
-		task1.setDate(new Date(0));
+		Random rnd = new Random();
+		task1.setDate(new DateTime(946771200000L + (Math.abs(rnd.nextLong()) % (70L * 365 * 24 * 60 * 60 * 1000))));
 		task1.setDescription("a task");
 		task1.setName("foo");
 		task1.setWeight(42);

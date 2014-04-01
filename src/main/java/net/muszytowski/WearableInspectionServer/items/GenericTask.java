@@ -1,12 +1,10 @@
 package net.muszytowski.WearableInspectionServer.items;
 
-import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,13 +12,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.joda.time.DateTime;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
@@ -46,7 +45,7 @@ public abstract class GenericTask {
 	
 	private String author;
 	
-	private Date date;
+	private DateTime date;
 	
 	private int weight;
 		
@@ -59,7 +58,7 @@ public abstract class GenericTask {
 	 */
 	public GenericTask(){}
 	
-	public GenericTask(String name, String description, String author, Date date){
+	public GenericTask(String name, String description, String author, DateTime date){
 		this.name = name;
 		this.description = description;
 		this.author = author;
@@ -125,14 +124,14 @@ public abstract class GenericTask {
 	/**
 	 * @return the date
 	 */
-	public Date getDate() {
+	public DateTime getDate() {
 		return date;
 	}
 
 	/**
 	 * @param date the date to set
 	 */
-	public void setDate(Date date) {
+	public void setDate(DateTime date) {
 		this.date = date;
 	}
 

@@ -1,10 +1,10 @@
 package net.muszytowski.WearableInspectionServer.items;
 
-import java.sql.Date;
-
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
@@ -15,15 +15,15 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 @DiscriminatorValue(value = "106")
 public class DateTask extends GenericTask {
 
-	private Date value;
+	private DateTime value;
 
 	public DateTask(){}
 	
-	public Date getValue() {
+	public DateTime getValue() {
 		return value;
 	}
 
-	public void setValue(Date value) {
+	public void setValue(DateTime value) {
 		this.value = value;
 	}
 	
