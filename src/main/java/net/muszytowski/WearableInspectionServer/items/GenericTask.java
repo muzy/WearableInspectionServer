@@ -45,6 +45,7 @@ public abstract class GenericTask {
 	
 	private String author;
 	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:ii:ss", timezone="CET")
 	private DateTime date;
 	
 	private int weight;

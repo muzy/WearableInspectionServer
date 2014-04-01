@@ -6,6 +6,7 @@ import javax.persistence.Table;
 
 import org.joda.time.DateTime;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
@@ -15,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 @DiscriminatorValue(value = "106")
 public class DateTask extends GenericTask {
 
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:ii:ss", timezone="CET")
 	private DateTime value;
 
 	public DateTask(){}
