@@ -49,11 +49,7 @@ public abstract class GenericTask {
 	private Date date;
 	
 	private int weight;
-	
-	@ManyToOne
-	@JsonBackReference
-    private GenericTask parent;
-	
+		
 	@OneToMany(mappedBy="resourceIdentifier",targetEntity=Attachment.class,
 		       fetch=FetchType.EAGER)
 	private List<Attachment> attachments;
@@ -63,12 +59,11 @@ public abstract class GenericTask {
 	 */
 	public GenericTask(){}
 	
-	public GenericTask(String name, String description, String author, Date date, GenericTask parent){
+	public GenericTask(String name, String description, String author, Date date){
 		this.name = name;
 		this.description = description;
 		this.author = author;
 		this.date = date;
-		this.parent = parent;
 	}
 
 	/**
@@ -139,20 +134,6 @@ public abstract class GenericTask {
 	 */
 	public void setDate(Date date) {
 		this.date = date;
-	}
-
-	/**
-	 * @return the parent
-	 */
-	public GenericTask getParent() {
-		return parent;
-	}
-
-	/**
-	 * @param parent the parent to set
-	 */
-	public void setParent(GenericTask parent) {
-		this.parent = parent;
 	}
 
 	public int getWeight() {
