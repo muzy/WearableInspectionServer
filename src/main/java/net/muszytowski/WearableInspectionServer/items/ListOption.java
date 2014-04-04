@@ -20,6 +20,7 @@ public class ListOption {
 	private String value;
 	
 	public ListOption(){};
+	
 	public ListOption(String value){
 		this.value = value;
 	}
@@ -30,7 +31,5 @@ public class ListOption {
 	public void setValue(String value) {
 		this.value = value;
 	}
-
-	
 	
 }
