@@ -50,7 +50,8 @@ public class WearableController {
 	@RequestMapping("/generateSampleData")
 	public @ResponseBody
 	InspectionTree getInspectionTreeSample(@RequestParam(value = "Depth", required = false) Integer depth) {
-		return SampleGenerator.generateRandomTree(depth);
+		InspectionTree sample = SampleGenerator.generateRandomTree((depth == null)? 7 : depth);
+		return inspectionTreeRepository.save(sample);
 	}
 	
 	@RequestMapping("/getInspectionTree")

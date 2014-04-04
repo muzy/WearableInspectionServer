@@ -1,5 +1,7 @@
 package net.muszytowski.WearableInspectionServer.items;
 
+import java.util.Date;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -24,5 +26,9 @@ public class BooleanTask extends GenericTask {
 	}
 	
 	public BooleanTask(){}
+	public BooleanTask(String name, String description, String author, Date date, Boolean value){
+		super(name,description,author,date);
+		this.value = value;
+	}
 	
 }

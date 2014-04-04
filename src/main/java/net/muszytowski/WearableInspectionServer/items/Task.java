@@ -38,4 +38,8 @@ public class Task extends GenericTask {
 	public List<GenericTask> getChildren() {
 		return this.children;
 	}
+	
+	public void addChildren(GenericTask child){
+		children.add(child);
+	}
 }

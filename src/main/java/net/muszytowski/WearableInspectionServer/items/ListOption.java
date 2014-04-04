@@ -20,6 +20,9 @@ public class ListOption {
 	private String value;
 	
 	public ListOption(){};
+	public ListOption(String value){
+		this.value = value;
+	}
 		
 	public String getValue() {
 		return value;

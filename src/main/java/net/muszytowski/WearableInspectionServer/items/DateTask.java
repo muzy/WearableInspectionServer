@@ -20,6 +20,10 @@ public class DateTask extends GenericTask {
 	private Date value;
 
 	public DateTask(){}
+	public DateTask(String name, String description, String author, Date date, Date value){
+		super(name,description,author,date);
+		this.value = value;
+	}
 	
 	public Date getValue() {
 		return value;
