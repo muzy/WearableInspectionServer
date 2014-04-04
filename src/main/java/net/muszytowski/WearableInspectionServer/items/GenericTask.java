@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 @Table(name = "Tasks")
 @JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")
 @DiscriminatorColumn(name="type", discriminatorType = DiscriminatorType.INTEGER)
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class GenericTask {
 	@Id 
     @Column(nullable = false)
