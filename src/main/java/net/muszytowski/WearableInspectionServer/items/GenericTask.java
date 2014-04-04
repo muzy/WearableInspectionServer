@@ -1,5 +1,6 @@
 package net.muszytowski.WearableInspectionServer.items;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -45,10 +46,12 @@ public abstract class GenericTask {
 	
 	private String author;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:ii:ss", timezone="CET")
-	private DateTime date;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone="UTC")
+	private Date date;
 	
 	private int weight;
+	
+	private Boolean isTestExecution;
 		
 	@OneToMany(mappedBy="resourceIdentifier",targetEntity=Attachment.class,
 		       fetch=FetchType.EAGER)
@@ -59,7 +62,7 @@ public abstract class GenericTask {
 	 */
 	public GenericTask(){}
 	
-	public GenericTask(String name, String description, String author, DateTime date){
+	public GenericTask(String name, String description, String author, Date date){
 		this.name = name;
 		this.description = description;
 		this.author = author;
@@ -125,14 +128,14 @@ public abstract class GenericTask {
 	/**
 	 * @return the date
 	 */
-	public DateTime getDate() {
+	public Date getDate() {
 		return date;
 	}
 
 	/**
 	 * @param date the date to set
 	 */
-	public void setDate(DateTime date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -142,5 +145,13 @@ public abstract class GenericTask {
 
 	public void setWeight(int weight) {
 		this.weight = weight;
+	}
+
+	public Boolean getIsTestExecution() {
+		return isTestExecution;
+	}
+
+	public void setIsTestExecution(Boolean isTestExecution) {
+		this.isTestExecution = isTestExecution;
 	}
 }

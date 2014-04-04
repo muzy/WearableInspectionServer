@@ -1,6 +1,7 @@
 package net.muszytowski.WearableInspectionServer.items;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -19,10 +20,16 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 @DiscriminatorValue(value = "1")
 public class Task extends GenericTask {
 	
-	@OneToMany(fetch=FetchType.LAZY, targetEntity=GenericTask.class, cascade = CascadeType.ALL)
+	@OneToMany(fetch=FetchType.EAGER, targetEntity=GenericTask.class, cascade = CascadeType.ALL)
 	@JoinColumn(name = "parentId")
 	private List<GenericTask> children = new ArrayList<GenericTask>();
 			
+	public Task(){}
+	
+	public Task(List<GenericTask> children,String name, String description, String author, Date date){
+		super(name,description,author,date);
+		this.children = children;
+	}
 	
 	public void setChildren(final List<GenericTask> children) {
 		this.children = children;

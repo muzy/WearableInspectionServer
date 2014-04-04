@@ -1,5 +1,8 @@
 package net.muszytowski.WearableInspectionServer.items;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -15,6 +18,10 @@ public class StringTask extends GenericTask {
 	private String value;
 
 	public StringTask(){}
+	public StringTask(String name, String description, String author, Date date, String value){
+		super(name,description,author,date);
+		this.value = value;
+	}
 	
 	public String getValue() {
 		return value;

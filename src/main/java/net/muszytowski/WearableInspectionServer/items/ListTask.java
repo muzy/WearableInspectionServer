@@ -1,5 +1,7 @@
 package net.muszytowski.WearableInspectionServer.items;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
@@ -23,7 +25,14 @@ public class ListTask extends GenericTask {
 	
 	@OneToMany(mappedBy="resourceIdentifier",targetEntity=ListOption.class,
 		       fetch=FetchType.EAGER)
-	private List<ListOption> options;
+	private List<ListOption> options = new ArrayList<ListOption>();
+	
+	public ListTask(){}
+	public ListTask(String name, String description, String author, Date date, ListOption value, List<ListOption> options){
+		super(name,description,author,date);
+		this.value = value;
+		this.options = options;
+	}
 
 	public ListOption getValue() {
 		return value;
@@ -31,6 +40,18 @@ public class ListTask extends GenericTask {
 
 	public void setValue(ListOption value) {
 		this.value = value;
+	}
+	
+	public void addOption(ListOption option) {
+		options.add(option);
+	}
+
+	public List<ListOption> getOptions() {
+		return options;
+	}
+
+	public void setOptions(List<ListOption> options) {
+		this.options = options;
 	}
 	
 }

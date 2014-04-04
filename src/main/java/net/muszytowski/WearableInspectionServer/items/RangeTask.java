@@ -1,5 +1,7 @@
 package net.muszytowski.WearableInspectionServer.items;
 
+import java.util.Date;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -19,6 +21,13 @@ public class RangeTask extends GenericTask {
 	private float value;
 	
 	public RangeTask(){}
+	public RangeTask(String name, String description, String author, Date date, Float start, Float stop, Float step, Float value){
+		super(name,description,author,date);
+		this.start = start;
+		this.stop = stop;
+		this.step = step;
+		this.value = value;
+	}
 	
 	/**
 	 * @return the start

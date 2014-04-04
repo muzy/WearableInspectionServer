@@ -1,14 +1,18 @@
 package net.muszytowski.WearableInspectionServer.items;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -23,58 +27,44 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 @JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")
 public class InspectionTree {
 	
-	@ManyToOne
-	@JsonBackReference
-    private InspectionTree parent;
-		
-	@OneToMany(mappedBy="parent", fetch=FetchType.EAGER)
-	@JsonManagedReference
-	private Collection<InspectionTree> children;
+	@OneToMany(fetch=FetchType.EAGER, targetEntity=InspectionTree.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "inspectionParentId")
+	private List<InspectionTree> children = new ArrayList<InspectionTree>();
 			
 	@Id 
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long resourceIdentifier;
 	
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER, targetEntity=Task.class, cascade = CascadeType.ALL)
 	private Task data;
 	
 	private String name;
 	
 	private String author;
-
-	/**
-	 * @return the parent
-	 */
-	public InspectionTree getParent() {
-		return parent;
+	
+	public InspectionTree(){};
+	
+	public InspectionTree(List<InspectionTree> children,Task data, String name, String author){
+		this.children = children;
+		this.data = data;
+		this.name = name;
+		this.author = author;
 	}
 
-	/**
-	 * @param parent the parent to set
-	 */
-	public void setParent(InspectionTree parent) {
-		this.parent = parent;
-	}
 
-	/**
-	 * @return the children
-	 */
-	public Collection<InspectionTree> getChildren() {
-		return children;
-	}
-
-	/**
-	 * @param children the children to set
-	 */
-	public void setChildren(Collection<InspectionTree> children) {
+	public void setChildren(final List<InspectionTree> children) {
 		this.children = children;
 	}
 	
 	public void addChild(InspectionTree child){
 		if(children == null)
-			children = new LinkedList<InspectionTree>();
+			children = new ArrayList<InspectionTree>();
 		children.add(child);
+	}
+	
+	public List<InspectionTree> getChildren() {
+		return this.children;
 	}
 
 	/**

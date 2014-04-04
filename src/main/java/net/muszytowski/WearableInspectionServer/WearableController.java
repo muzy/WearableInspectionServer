@@ -1,5 +1,7 @@
 package net.muszytowski.WearableInspectionServer;
 
+import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import net.muszytowski.WearableInspectionServer.items.Attachment;
@@ -7,9 +9,9 @@ import net.muszytowski.WearableInspectionServer.items.GenericTask;
 import net.muszytowski.WearableInspectionServer.items.InspectionTree;
 import net.muszytowski.WearableInspectionServer.items.Status;
 import net.muszytowski.WearableInspectionServer.items.Task;
+import net.muszytowski.WearableInspectionServer.repositories.InspectionTreeRepository;
 import net.muszytowski.WearableInspectionServer.repositories.TaskRepository;
 
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,17 +26,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class WearableController {
 	
 	private @Autowired TaskRepository taskRepository;
+	private @Autowired InspectionTreeRepository inspectionTreeRepository;
 	
 	/**
 	 * Set InspectionTree
 	 * 
 	 * @return
+	 * @throws  
 	 */
 	@RequestMapping("/setInspectionTree")
 	public @ResponseBody
-	Status setInspectionTree(
-			@RequestParam(value = "Insrc/main/java/net/muszytowski/WearableInspectionServer/items/InspectionTree.javaspectionTree", required = true) InspectionTree inspectionTree) {
-		return null;
+	InspectionTree setInspectionTree(
+			@RequestParam(value = "InspectionTree", required = true) String inspectionTree) throws Exception {
+		InspectionTree tree = new ObjectMapper().readValue(inspectionTree.getBytes(), InspectionTree.class);
+		return inspectionTreeRepository.save(tree);
 	}
 
 	/**
@@ -42,28 +47,19 @@ public class WearableController {
 	 * 
 	 * @return
 	 */
+	@RequestMapping("/generateSampleData")
+	public @ResponseBody
+	InspectionTree getInspectionTreeSample(@RequestParam(value = "Depth", required = false) Integer depth) {
+		return SampleGenerator.generateRandomTree(depth);
+	}
+	
 	@RequestMapping("/getInspectionTree")
 	public @ResponseBody
 	InspectionTree getInspectionTree() {
-		InspectionTree tree1 = new InspectionTree();
-		tree1.setAuthor("muzy");
-		tree1.setName("a tree");
-		tree1.setParent(null);
-		InspectionTree tree2 = new InspectionTree();
-		tree2.setAuthor("muzy two");
-		tree2.setName("another tree");
-		tree2.setParent(tree1);
-		tree1.addChild(tree2);
-		Task task1 = new Task();
-		task1.setAuthor("muzzzzy");
-		Random rnd = new Random();
-		task1.setDate(new DateTime(946771200000L + (Math.abs(rnd.nextLong()) % (70L * 365 * 24 * 60 * 60 * 1000))));
-		task1.setDescription("a task");
-		task1.setName("foo");
-		task1.setWeight(42);
-		tree1.setData(task1);
-		return tree1;
+		List<InspectionTree> result = inspectionTreeRepository.findRoot();
+		return (result.isEmpty())?null : result.get(0);
 	}
+	
 	
 	/**
 	 * Gets a task (by ID)
