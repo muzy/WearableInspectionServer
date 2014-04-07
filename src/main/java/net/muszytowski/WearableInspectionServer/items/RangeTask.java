@@ -21,6 +21,7 @@ public class RangeTask extends GenericTask {
 	private float value;
 	
 	public RangeTask(){}
+	
 	public RangeTask(String name, String description, String author, Date date, Float start, Float stop, Float step, Float value){
 		super(name,description,author,date);
 		this.start = start;

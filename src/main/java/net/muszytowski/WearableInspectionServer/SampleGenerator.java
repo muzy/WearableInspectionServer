@@ -161,7 +161,7 @@ public class SampleGenerator {
 			Task task = new Task();
 			task.setAuthor(authors.get(r.nextInt(authors.size())));
 			task.setDescription(descriptions.get(r.nextInt(descriptions.size())));
-			task.setIsTestExecution(false);
+			task.setTestExecution(null);
 			task.setWeight(r.nextInt(100));
 			task.setName(taskName.get(r.nextInt(taskName.size())));
 			task.setDate(new Date(
@@ -197,7 +197,7 @@ public class SampleGenerator {
 			Task task = new Task();
 			task.setAuthor(authors.get(r.nextInt(treeName.size())));
 			task.setDescription(descriptions.get(r.nextInt(descriptions.size())));
-			task.setIsTestExecution(false);
+			task.setTestExecution(null);
 			task.setWeight(r.nextInt(100));
 			task.setName(taskName.get(r.nextInt(taskName.size())));
 			task.setDate(new Date(
@@ -215,7 +215,7 @@ public class SampleGenerator {
 		mytask.setName(booleanTaskName.get(r.nextInt(booleanTaskName.size())));
 		mytask.setAuthor(authors.get(r.nextInt(authors.size())));
 		mytask.setDescription(descriptions.get(r.nextInt(descriptions.size())));
-		mytask.setIsTestExecution(false);
+		mytask.setTestExecution(null);
 		mytask.setWeight(r.nextInt(100));
 		mytask.setDate(new Date(946771200000L + (Math.abs(r.nextLong()) % (70L
 				* 365 * 24 * 60 * 60 * 1000))));
@@ -227,7 +227,7 @@ public class SampleGenerator {
 		mytask.setName(dateTaskName.get(r.nextInt(dateTaskName.size())));
 		mytask.setAuthor(authors.get(r.nextInt(authors.size())));
 		mytask.setDescription(descriptions.get(r.nextInt(descriptions.size())));
-		mytask.setIsTestExecution(false);
+		mytask.setTestExecution(null);
 		mytask.setWeight(r.nextInt(100));
 		mytask.setDate(new Date(946771200000L + (Math.abs(r.nextLong()) % (70L
 				* 365 * 24 * 60 * 60 * 1000))));
@@ -239,7 +239,7 @@ public class SampleGenerator {
 		mytask.setName(floatTaskName.get(r.nextInt(floatTaskName.size())));
 		mytask.setAuthor(authors.get(r.nextInt(authors.size())));
 		mytask.setDescription(descriptions.get(r.nextInt(descriptions.size())));
-		mytask.setIsTestExecution(false);
+		mytask.setTestExecution(null);
 		mytask.setWeight(r.nextInt(100));
 		mytask.setDate(new Date(946771200000L + (Math.abs(r.nextLong()) % (70L
 				* 365 * 24 * 60 * 60 * 1000))));
@@ -251,7 +251,7 @@ public class SampleGenerator {
 		mytask.setName(integerTaskName.get(r.nextInt(integerTaskName.size())));
 		mytask.setAuthor(authors.get(r.nextInt(authors.size())));
 		mytask.setDescription(descriptions.get(r.nextInt(descriptions.size())));
-		mytask.setIsTestExecution(false);
+		mytask.setTestExecution(null);
 		mytask.setWeight(r.nextInt(100));
 		mytask.setDate(new Date(946771200000L + (Math.abs(r.nextLong()) % (70L
 				* 365 * 24 * 60 * 60 * 1000))));
@@ -266,7 +266,7 @@ public class SampleGenerator {
 		}
 		mytask.setAuthor(authors.get(r.nextInt(authors.size())));
 		mytask.setDescription(descriptions.get(r.nextInt(descriptions.size())));
-		mytask.setIsTestExecution(false);
+		mytask.setTestExecution(null);
 		mytask.setWeight(r.nextInt(100));
 		mytask.setDate(new Date(946771200000L + (Math.abs(r.nextLong()) % (70L
 				* 365 * 24 * 60 * 60 * 1000))));
@@ -276,12 +276,12 @@ public class SampleGenerator {
 	public static RangeTask generateRangeTask() {
 		RangeTask mytask = new RangeTask();
 		mytask.setName(rangeTaskName.get(r.nextInt(rangeTaskName.size())));
-		mytask.setStart(r.nextInt(10));
-		mytask.setStop(r.nextInt(100) + 10);
-		mytask.setStep(r.nextInt(1) + 1);
+		mytask.setStart(r.nextFloat()+0.1f);
+		mytask.setStop(mytask.getStart() + r.nextFloat());
+		mytask.setStep(0.1f);
 		mytask.setAuthor(authors.get(r.nextInt(authors.size())));
 		mytask.setDescription(descriptions.get(r.nextInt(descriptions.size())));
-		mytask.setIsTestExecution(false);
+		mytask.setTestExecution(null);
 		mytask.setWeight(r.nextInt(100));
 		mytask.setDate(new Date(946771200000L + (Math.abs(r.nextLong()) % (70L
 				* 365 * 24 * 60 * 60 * 1000))));
@@ -293,7 +293,7 @@ public class SampleGenerator {
 		mytask.setName(stringTaskName.get(r.nextInt(stringTaskName.size())));
 		mytask.setAuthor(authors.get(r.nextInt(authors.size())));
 		mytask.setDescription(descriptions.get(r.nextInt(descriptions.size())));
-		mytask.setIsTestExecution(false);
+		mytask.setTestExecution(null);
 		mytask.setWeight(r.nextInt(100));
 		mytask.setDate(new Date(946771200000L + (Math.abs(r.nextLong()) % (70L
 				* 365 * 24 * 60 * 60 * 1000))));

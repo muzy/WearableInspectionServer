@@ -51,6 +51,7 @@ public class WearableController {
 	public @ResponseBody
 	InspectionTree getInspectionTreeSample(@RequestParam(value = "Depth", required = false) Integer depth) {
 		InspectionTree sample = SampleGenerator.generateRandomTree((depth == null)? 7 : depth);
+		System.out.println(sample);
 		return inspectionTreeRepository.save(sample);
 	}
 	
@@ -72,6 +73,13 @@ public class WearableController {
 	GenericTask getTask(
 			@RequestParam(value = "Task", required = true) Long id) {
 		return taskRepository.findOne(id);
+	}
+	
+	@RequestMapping("/getTaskExecution")
+	public @ResponseBody
+	List<GenericTask> getTaskExecution(
+			@RequestParam(value = "Task", required = true) Long id) {
+		return taskRepository.findAllExecutions(id);
 	}
 	
 	/**

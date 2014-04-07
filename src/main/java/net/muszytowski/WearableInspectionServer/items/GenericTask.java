@@ -51,7 +51,7 @@ public abstract class GenericTask {
 	
 	private int weight;
 	
-	private Boolean isTestExecution;
+	private Long testExecution;
 		
 	@OneToMany(mappedBy="resourceIdentifier",targetEntity=Attachment.class,
 		       fetch=FetchType.EAGER)
@@ -147,11 +147,11 @@ public abstract class GenericTask {
 		this.weight = weight;
 	}
 
-	public Boolean getIsTestExecution() {
-		return isTestExecution;
+	public Long getTestExecution() {
+		return testExecution;
 	}
 
-	public void setIsTestExecution(Boolean isTestExecution) {
-		this.isTestExecution = isTestExecution;
+	public void setTestExecution(Long testExecution) {
+		this.testExecution = testExecution;
 	}
 }
