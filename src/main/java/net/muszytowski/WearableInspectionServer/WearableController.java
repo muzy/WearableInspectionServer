@@ -1,8 +1,6 @@
 package net.muszytowski.WearableInspectionServer;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 import net.muszytowski.WearableInspectionServer.items.Attachment;
 import net.muszytowski.WearableInspectionServer.items.GenericTask;
@@ -15,7 +13,9 @@ import net.muszytowski.WearableInspectionServer.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -34,10 +34,20 @@ public class WearableController {
 	 * @return
 	 * @throws  
 	 */
-	@RequestMapping("/setInspectionTree")
+	@RequestMapping(value = "/setInspectionTree",
+	         method = RequestMethod.GET)
 	public @ResponseBody
 	InspectionTree setInspectionTree(
 			@RequestParam(value = "InspectionTree", required = true) String inspectionTree) throws Exception {
+		InspectionTree tree = new ObjectMapper().readValue(inspectionTree.getBytes(), InspectionTree.class);
+		return inspectionTreeRepository.save(tree);
+	}
+	
+	@RequestMapping(value = "/setInspectionTree",
+	         method = RequestMethod.POST)
+	public @ResponseBody
+	InspectionTree setInspectionTreePOST(
+			@RequestBody String inspectionTree) throws Exception {
 		InspectionTree tree = new ObjectMapper().readValue(inspectionTree.getBytes(), InspectionTree.class);
 		return inspectionTreeRepository.save(tree);
 	}
