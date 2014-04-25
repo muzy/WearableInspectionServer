@@ -130,6 +130,11 @@ public class SampleGenerator {
 
 	public static Random r = new Random();
 
+	/**
+	 * Generates a random inspection tree with depth specified
+	 * @param depth
+	 * @return
+	 */
 	public static InspectionTree generateRandomTree(int depth) {
 		int inspectionDepth = (depth - r.nextInt(depth - 1)); // -1 to have at
 																// least one
@@ -138,6 +143,13 @@ public class SampleGenerator {
 		return generateInspectionTree(inspectionDepth, taskDepth);
 	}
 
+	/**
+	 * Generates an InspectionTree recursively until depth is
+	 * reached.
+	 * @param idepth
+	 * @param tdepth
+	 * @return
+	 */
 	public static InspectionTree generateInspectionTree(int idepth, int tdepth) {
 		if (idepth <= 1) {
 			InspectionTree inspection = new InspectionTree();
@@ -156,6 +168,11 @@ public class SampleGenerator {
 		}
 	}
 
+	/**
+	 * Generates a TaskTree recursively
+	 * @param depth
+	 * @return
+	 */
 	public static Task generateTaskTree(int depth) {
 		if (depth <= 1) {
 			Task task = new Task();
@@ -210,6 +227,10 @@ public class SampleGenerator {
 		}
 	}
 
+	/**
+	 * Generates a BooleanTask
+	 * @return BooleanTask
+	 */
 	public static BooleanTask generateBooleanTask() {
 		BooleanTask mytask = new BooleanTask();
 		mytask.setName(booleanTaskName.get(r.nextInt(booleanTaskName.size())));
@@ -222,6 +243,10 @@ public class SampleGenerator {
 		return mytask;
 	}
 
+	/**
+	 * Generates a DateTask
+	 * @return DateTask
+	 */
 	public static DateTask generateDateTask() {
 		DateTask mytask = new DateTask();
 		mytask.setName(dateTaskName.get(r.nextInt(dateTaskName.size())));
@@ -234,6 +259,10 @@ public class SampleGenerator {
 		return mytask;
 	}
 
+	/**
+	 * Generates a FloatTask
+	 * @return FloatTask
+	 */
 	public static FloatTask generateFloatTask() {
 		FloatTask mytask = new FloatTask();
 		mytask.setName(floatTaskName.get(r.nextInt(floatTaskName.size())));
@@ -246,6 +275,10 @@ public class SampleGenerator {
 		return mytask;
 	}
 
+	/**
+	 * Generates an IntegerTask
+	 * @return IntegerTask
+	 */
 	public static IntegerTask generateIntegerTask() {
 		IntegerTask mytask = new IntegerTask();
 		mytask.setName(integerTaskName.get(r.nextInt(integerTaskName.size())));
@@ -258,6 +291,10 @@ public class SampleGenerator {
 		return mytask;
 	}
 
+	/**
+	 * Generates a ListTask
+	 * @return ListTask
+	 */
 	public static ListTask generateListTask() {
 		ListTask mytask = new ListTask();
 		mytask.setName(listTaskName.get(r.nextInt(listTaskName.size())));
@@ -273,6 +310,10 @@ public class SampleGenerator {
 		return mytask;
 	}
 
+	/**
+	 * Generates a RangeTask
+	 * @return RangeTask
+	 */
 	public static RangeTask generateRangeTask() {
 		RangeTask mytask = new RangeTask();
 		mytask.setName(rangeTaskName.get(r.nextInt(rangeTaskName.size())));
@@ -288,6 +329,10 @@ public class SampleGenerator {
 		return mytask;
 	}
 
+	/**
+	 * Generates a StringTask
+	 * @return StringTask
+	 */
 	public static StringTask generateStringTask() {
 		StringTask mytask = new StringTask();
 		mytask.setName(stringTaskName.get(r.nextInt(stringTaskName.size())));

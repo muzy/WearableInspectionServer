@@ -39,7 +39,7 @@ public class WearableController {
 	public @ResponseBody
 	InspectionTree setInspectionTree(
 			@RequestParam(value = "InspectionTree", required = true) String inspectionTree) throws Exception {
-		InspectionTree tree = new ObjectMapper().readValue(inspectionTree.getBytes(), InspectionTree.class);
+		InspectionTree tree = new ObjectMapper().readValue(inspectionTree.getBytes("UTF-8"), InspectionTree.class);
 		return inspectionTreeRepository.save(tree);
 	}
 	
@@ -48,7 +48,7 @@ public class WearableController {
 	public @ResponseBody
 	InspectionTree setInspectionTreePOST(
 			@RequestBody String inspectionTree) throws Exception {
-		InspectionTree tree = new ObjectMapper().readValue(inspectionTree.getBytes(), InspectionTree.class);
+		InspectionTree tree = new ObjectMapper().readValue(inspectionTree.getBytes("UTF-8"), InspectionTree.class);
 		return inspectionTreeRepository.save(tree);
 	}
 
@@ -85,6 +85,11 @@ public class WearableController {
 		return taskRepository.findOne(id);
 	}
 	
+	/**
+	 * Sets a task which was executed 
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping("/getTaskExecution")
 	public @ResponseBody
 	List<GenericTask> getTaskExecution(
@@ -101,7 +106,7 @@ public class WearableController {
 	public @ResponseBody
 	Task setTask(
 			@RequestParam(value = "Task", required = true) String taskString) throws Exception 	{
-		Task task = new ObjectMapper().readValue(taskString.getBytes(), Task.class);
+		Task task = new ObjectMapper().readValue(taskString.getBytes("UTF-8"), Task.class);
 		return taskRepository.save(task);
 	}
 	

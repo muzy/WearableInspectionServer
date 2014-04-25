@@ -10,6 +10,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 
+/**
+ * CORS Filter to allow requests from everywhere :)
+ */
 @Component
 public class SimpleCORSFilter implements Filter {
 
