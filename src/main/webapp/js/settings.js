@@ -10,7 +10,7 @@ var inspectionSettings = {
 		} else {
 			inspectionClient.settings = this.defaults;
 			if(!inspectionClient.isNwPackage) {
-				inspectionClient.settings.serverUrl = location.protocol + '//' + location.host + location.port ? ':' + location.port : '/';
+				inspectionClient.settings.serverUrl = location.protocol + '//' + location.host + '/';
 			}
 		}
 		$("body>[data-role='panel']").panel().enhanceWithin();
