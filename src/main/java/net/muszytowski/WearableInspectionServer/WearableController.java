@@ -102,10 +102,18 @@ public class WearableController {
 	 * @param task
 	 * @return
 	 */
-	@RequestMapping("/setTask")
+	@RequestMapping(value = "/setTask", method = RequestMethod.GET)
 	public @ResponseBody
 	Task setTask(
 			@RequestParam(value = "Task", required = true) String taskString) throws Exception 	{
+		Task task = new ObjectMapper().readValue(taskString.getBytes("UTF-8"), Task.class);
+		return taskRepository.save(task);
+	}
+	
+	@RequestMapping(value = "/setTask", method = RequestMethod.POST)
+	public @ResponseBody
+	Task setTaskPOST(
+			@RequestBody String taskString) throws Exception {
 		Task task = new ObjectMapper().readValue(taskString.getBytes("UTF-8"), Task.class);
 		return taskRepository.save(task);
 	}
