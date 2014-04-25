@@ -22,6 +22,10 @@ jar {
     }
 }
 
+jar.into('static') {
+    from('src/main/webapp')
+}
+
 repositories {
     mavenCentral()
     maven { url "http://repo.spring.io/libs-snapshot" }
