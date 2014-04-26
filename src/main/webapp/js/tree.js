@@ -124,10 +124,16 @@ var inspectionTree = {
 		this.zTree = $.fn.zTree.init($('#tree'), this.InspectionTreeSettings, this.inspectionNodes);
 		this.taskTree = $.fn.zTree.init($('#tasktree'), this.TaskTreeSettings, this.taskNodes);
 		if(selectedInspection && !fullReset) {
-			this.zTree.selectNode(selectedInspection);
+			// Wichtig! Neu einlesen des selektierten Nodes, da der Name geändert sein kann
+			var newInspection = this.zTree.getNodeByParam('id', selectedInspection.id);
+			$('.inspection-edit-path').text(this.getNodePath(newInspection));
+			this.zTree.selectNode(newInspection);
 		}
 		if(selectedTask && !fullReset) {
-			this.taskTree.selectNode(selectedTask);
+			// Wichtig! Neu einlesen des selektierten Nodes, da der Name geändert sein kann
+			var newTask = this.taskTree.getNodeByParam('id', selectedTask.id);
+			$('.task-edit-path').text(this.getNodePath(newTask));
+			this.taskTree.selectNode(newTask);
 		}
 		if(this.currentTask > 0) {
 			var rootNodes = this.taskTree.getNodesByParam('pId', null, null);
@@ -173,8 +179,20 @@ var inspectionTree = {
 				this.addNode(0, data.data, true);
 			}
 		} else {
+			var dataClass = data.class.split('.')[4];
+			var rangeAttributes = null;
+			var listAttributes = null;
 			if(data.resourceIdentifier >= this.freeTaskIdentifier) {
 				this.freeTaskIdentifier = data.resourceIdentifier + 1;
+			}
+			if(dataClass == 'RangeTask') {
+				rangeAttributes = {
+					start: data.start,
+					stop: data.stop,
+					step: data.step
+				};
+			} else if(dataClass == 'ListTask') {
+				listAttributes = data.options;
 			}
 			this.taskNodes.push({
 				pId: pId,
@@ -185,7 +203,9 @@ var inspectionTree = {
 				description: data.description,
 				date: data.date,
 				weight: data.weight,
-				type: data.class.split('.')[4],
+				type: dataClass,
+				range: rangeAttributes,
+				list: listAttributes,
 				icon: 'img/task-icons/' + data.class.split('.')[4] + '.png'
 			});
 			if(data.children) {
@@ -235,11 +255,24 @@ var inspectionTree = {
 	updateTaskNode: function(id, data) {
 		this.onOperation();
 		var target = this.getTaskNodeById(id);
+		var listAttributes = null;
+		var rangeAttributes = null;
+		if(target.type == 'ListTask') {
+			listAttributes = data.options;
+		} else if(target.type == 'RangeTask') {
+			rangeAttributes = {
+				start: data.start,
+				stop: data.stop,
+				step: data.step
+			}
+		}
 		if(target) {
 			target.name = data.name;
 			target.author = data.author;
 			target.description = data.description;
 			target.weight = data.weight;
+			target.list = listAttributes;
+			target.range = rangeAttributes;
 			this.refresh();
 		}
 	},
