@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -23,8 +25,8 @@ public class ListTask extends GenericTask {
 	@OneToOne(optional=true)
 	private ListOption value;
 	
-	@OneToMany(mappedBy="resourceIdentifier",targetEntity=ListOption.class,
-		       fetch=FetchType.EAGER)
+	@OneToMany(targetEntity=ListOption.class, fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name = "listTask")
 	private List<ListOption> options = new ArrayList<ListOption>();
 	
 	public ListTask(){}
