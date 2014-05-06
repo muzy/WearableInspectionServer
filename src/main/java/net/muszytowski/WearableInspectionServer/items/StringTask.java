@@ -1,7 +1,6 @@
 package net.muszytowski.WearableInspectionServer.items;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
