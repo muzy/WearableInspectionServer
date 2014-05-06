@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -22,25 +21,24 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 @DiscriminatorValue(value = "102")
 public class ListTask extends GenericTask {
 
-	@OneToOne(optional=true)
-	private ListOption value;
+	private String value;
 	
 	@OneToMany(targetEntity=ListOption.class, fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name = "listTask")
 	private List<ListOption> options = new ArrayList<ListOption>();
 	
 	public ListTask(){}
-	public ListTask(String name, String description, String author, Date date, ListOption value, List<ListOption> options){
+	public ListTask(String name, String description, String author, Date date, String value, List<ListOption> options){
 		super(name,description,author,date);
 		this.value = value;
 		this.options = options;
 	}
 
-	public ListOption getValue() {
+	public String getValue() {
 		return value;
 	}
 
-	public void setValue(ListOption value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
 	
