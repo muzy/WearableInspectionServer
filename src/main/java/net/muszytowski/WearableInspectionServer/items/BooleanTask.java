@@ -9,6 +9,11 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
+/**
+ * Boolean Tasks for boolean tasks and questions like
+ * "to be or not to be". Is a GenericTask.
+ * @author Sebastian Muszytowski
+ */
 @Entity
 @Table(name = "BooleanTask")
 @JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")

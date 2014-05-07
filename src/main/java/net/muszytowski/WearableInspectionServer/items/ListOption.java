@@ -9,6 +9,12 @@ import javax.persistence.Id;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
+/**
+ * ListOptions are option beans for ListTasks.
+ * They can be chosen by the user to answer a ListTask.
+ * 
+ * @author Sebastian Muszytowski
+ */
 @Entity
 @JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")
 public class ListOption {

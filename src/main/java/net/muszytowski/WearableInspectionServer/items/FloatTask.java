@@ -9,6 +9,12 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
+
+/**
+ * Task for float return values
+ * @author Sebastian Muszytowski
+ *
+ */
 @Entity
 @Table(name = "FloatTask")
 @JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")

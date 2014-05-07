@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
+/**
+ * Attachment beans for attachments.
+ * @author Sebastian Muszytowski
+ */
 @Entity
 @JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")
 public class Attachment {

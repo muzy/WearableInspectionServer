@@ -1,6 +1,14 @@
 package net.muszytowski.WearableInspectionServer.items;
 
-
+/**
+ * Status beans for server return codes. 
+ * 
+ * Status objects should be used whenever an error occurs.
+ * A standardized definition which maps a status onto an error
+ * condition must be introduced.
+ * 
+ * @author Sebastian Muszytowski
+ */
 public class Status {
 
 	private int code;

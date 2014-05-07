@@ -14,7 +14,11 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
-
+/**
+ * Task tree bean for grouping tasks in a hierarchy.
+ * 
+ * @author Sebastian Muszytowski
+ */
 @Entity
 @JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")
 @DiscriminatorValue(value = "1")

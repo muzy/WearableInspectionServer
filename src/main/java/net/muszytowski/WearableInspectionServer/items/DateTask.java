@@ -10,6 +10,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
+
+/**
+ * Date task for specifying a date in the format
+ * yyyy-MM-dd HH:mm:ss. To be used with date related tasks.
+ * 
+ * @author Sebastian Muszytowski
+ */
 @Entity
 @Table(name = "DateTask")
 @JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")

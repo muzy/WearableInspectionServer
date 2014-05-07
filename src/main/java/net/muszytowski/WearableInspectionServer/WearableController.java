@@ -21,6 +21,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * Controller for the WearableInspectionServer.
+ * Here the mapping of URLs is done.
+ * 
+ * @author Sebastian Muszytowski
+ *
+ */
 @Controller
 @Transactional
 public class WearableController {
@@ -29,7 +36,10 @@ public class WearableController {
 	private @Autowired InspectionTreeRepository inspectionTreeRepository;
 	
 	/**
-	 * Set InspectionTree
+	 * Sets an InspectionTree, either by using POST or GET.
+	 * This methods are to be called by the configuration application
+	 * only. The object mapper parses the JSON string into an 
+	 * InspectionTree using UTF-8 encoding.
 	 * 
 	 * @return
 	 * @throws  
@@ -53,9 +63,9 @@ public class WearableController {
 	}
 
 	/**
-	 * Get the InspectionTree
-	 * 
-	 * @return
+	 * Generates SampleData and stores it internally.
+	 * @param depth Depth of the Tree to be generated
+	 * @return InspectionTree generated
 	 */
 	@RequestMapping("/generateSampleData")
 	public @ResponseBody
@@ -65,6 +75,11 @@ public class WearableController {
 		return inspectionTreeRepository.save(sample);
 	}
 	
+	/**
+	 * Get the InspectionTree from the ObjectMapper and returns
+	 * it in JSON format
+	 * @return InspectionTree
+	 */
 	@RequestMapping("/getInspectionTree")
 	public @ResponseBody
 	InspectionTree getInspectionTree() {
@@ -73,9 +88,11 @@ public class WearableController {
 	}
 	
 	/**
-	 * Gets a task (by ID)
-	 * @param long
-	 * @return
+	 * Gets a task by its resourceIdentifier (long) data 
+	 * type. To be used by clients to get task template to be
+	 * executed.
+	 * @param long resourceIdentifier
+	 * @return Task
 	 */
 	@RequestMapping("/getTask")
 	public @ResponseBody
@@ -85,9 +102,10 @@ public class WearableController {
 	}
 	
 	/**
-	 * Sets a task which was executed 
-	 * @param id
-	 * @return
+	 * Gets a List of Tasks which were executed before.
+	 * Can be specified for root level tasks or abitrary tasks.
+	 * @param id resourceIdentifier
+	 * @return List of Tasks
 	 */
 	@RequestMapping("/getTaskExecution")
 	public @ResponseBody
@@ -97,9 +115,12 @@ public class WearableController {
 	}
 	
 	/**
-	 * Sets a task
+	 * Sets a task. For the desktop application the task is the 
+	 * definition how a process is to be executed. For the client
+	 * applications it is used to upload executed tests.
+	 * 
 	 * @param task
-	 * @return
+	 * @return Task The task just uploaded (for verification)
 	 */
 	@RequestMapping(value = "/setTask", method = RequestMethod.GET)
 	public @ResponseBody
@@ -118,9 +139,12 @@ public class WearableController {
 	}
 	
 	/**
-	 * uploads a attachment
+	 * Uploads an attachment to the Server
+	 * 
+	 * THIS FUNCTION IS NOT YET IMPLEMENTED
+	 * 
 	 * @param attachment
-	 * @return
+	 * @return Status
 	 */
 	@RequestMapping("/uploadAttachment")
 	public @ResponseBody

@@ -9,6 +9,11 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
+/**
+ * String task bean for strings.
+ * 
+ * @author Sebastian Muszytowski
+ */
 @Entity
 @Table(name = "StringTask")
 @JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")

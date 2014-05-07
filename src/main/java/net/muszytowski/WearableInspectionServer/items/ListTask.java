@@ -15,6 +15,12 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
+/**
+ * A ListTask bean has one or more options the user can choose from.
+ * 
+ * @author Sebastian Muszytowski
+ *
+ */
 @Entity
 @Table(name = "ListTask")
 @JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")

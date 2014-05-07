@@ -16,7 +16,12 @@ import net.muszytowski.WearableInspectionServer.items.StringTask;
 import net.muszytowski.WearableInspectionServer.items.Task;
 
 public class SampleGenerator {
-
+	
+	/**
+	 * Sample data definition for several elements.
+	 * Those data does not make sense at all but may
+	 * makes you laugh out loud.
+	 */
 	@SuppressWarnings("serial")
 	public static ArrayList<String> authors = new ArrayList<String>() {
 		{
@@ -143,7 +148,7 @@ public class SampleGenerator {
 	}
 
 	/**
-	 * Generates an InspectionTree recursively until depth is
+	 * Generates an example InspectionTree recursively until depth is
 	 * reached.
 	 * @param idepth
 	 * @param tdepth
@@ -168,7 +173,7 @@ public class SampleGenerator {
 	}
 
 	/**
-	 * Generates a TaskTree recursively
+	 * Generates a example TaskTree recursively
 	 * @param depth
 	 * @return
 	 */
@@ -227,7 +232,7 @@ public class SampleGenerator {
 	}
 
 	/**
-	 * Generates a BooleanTask
+	 * Generates a example BooleanTask
 	 * @return BooleanTask
 	 */
 	public static BooleanTask generateBooleanTask() {
@@ -243,7 +248,7 @@ public class SampleGenerator {
 	}
 
 	/**
-	 * Generates a DateTask
+	 * Generates a example DateTask
 	 * @return DateTask
 	 */
 	public static DateTask generateDateTask() {
@@ -259,7 +264,7 @@ public class SampleGenerator {
 	}
 
 	/**
-	 * Generates a FloatTask
+	 * Generates a example FloatTask
 	 * @return FloatTask
 	 */
 	public static FloatTask generateFloatTask() {
@@ -275,7 +280,7 @@ public class SampleGenerator {
 	}
 
 	/**
-	 * Generates an IntegerTask
+	 * Generates an example IntegerTask
 	 * @return IntegerTask
 	 */
 	public static IntegerTask generateIntegerTask() {
@@ -291,7 +296,7 @@ public class SampleGenerator {
 	}
 
 	/**
-	 * Generates a ListTask
+	 * Generates a example ListTask
 	 * @return ListTask
 	 */
 	public static ListTask generateListTask() {
@@ -310,7 +315,7 @@ public class SampleGenerator {
 	}
 
 	/**
-	 * Generates a RangeTask
+	 * Generates a example RangeTask
 	 * @return RangeTask
 	 */
 	public static RangeTask generateRangeTask() {
@@ -329,7 +334,7 @@ public class SampleGenerator {
 	}
 
 	/**
-	 * Generates a StringTask
+	 * Generates a example StringTask
 	 * @return StringTask
 	 */
 	public static StringTask generateStringTask() {

@@ -8,6 +8,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+/**
+ * Repository for Task beans
+ * @author Sebastian Muszytowski
+ */
 public interface TaskRepository extends JpaRepository<GenericTask, Long> {
 	
 	@Query("SELECT t FROM Task t WHERE testExecution = :executionid")

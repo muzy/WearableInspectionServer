@@ -7,6 +7,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 
+/**
+ * Entry point for spring boot application.
+ * Annotations enable auto configuration,
+ * set the source of the properties and allows automatic
+ * scan for components.
+ * 
+ * @author Sebastian Muszytowski
+ */
 @ComponentScan
 @Configuration
 @EnableAutoConfiguration

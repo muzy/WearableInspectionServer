@@ -9,6 +9,10 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
+/**
+ * IntegerTask is a bean for integer return types.
+ * @author Sebastian Muszytowski
+ */
 @Entity
 @Table(name = "IntegerTask")
 @JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")

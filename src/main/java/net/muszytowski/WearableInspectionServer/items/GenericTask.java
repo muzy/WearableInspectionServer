@@ -22,6 +22,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
+
+/**
+ * Generic Task bean with attributes that every task
+ * should have.
+ * @author Sebastian Muszytowski
+ *
+ */
 @Entity
 @Table(name = "Tasks")
 @JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")

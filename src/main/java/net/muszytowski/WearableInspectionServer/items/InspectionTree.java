@@ -17,7 +17,13 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
-
+/**
+ * An InspectionTree is a recursive tree which holds the
+ * information about InspectionPlans (Tasks). By specifying
+ * children only (without data) a hierarchy can be build.
+ * 
+ * @author Sebastian Muszytowski
+ */
 @Entity
 @JsonTypeInfo(use=com.fasterxml.jackson.annotation.JsonTypeInfo.Id.CLASS, include=As.PROPERTY, property="class")
 public class InspectionTree {
