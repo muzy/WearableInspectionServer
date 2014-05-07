@@ -88,5 +88,21 @@
 			"range":"Range Task",
 			"string":"String Task"
 		}
+	},
+	"resultpage": {
+		"choosedocument":"Choose a document",
+		"chooseInspection":"Please select an inspection node",
+		"executedon":"Executed on",
+		"inspectionoverview":"Inspection overview",
+		"noexecutions":"No executions available",
+		"response":"Response"
+	},
+	"resultdetailpage": {
+		"description":"Description",
+		"false":"false",
+		"nodescription":"no description",
+		"novalue":"no value",
+		"true":"true",
+		"value":"Value"
 	}
 }

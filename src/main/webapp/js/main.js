@@ -1,7 +1,7 @@
 // Datenobjekt zur Kapselung
 var inspectionClient = {
 	title: 'Inspection Manager',
-	version: '0.1',
+	version: '0.2',
 	isNwPackage: typeof(process) == 'object',
 	init: function() {
 		// initialisiere Einstellungen
@@ -21,6 +21,12 @@ var inspectionClient = {
 		
 		// initialisiere Tasksedit View Handler
 		taskManager.init();
+		
+		// initialisiere Result View Handler
+		resultManager.init();
+		
+		// initialisiere Result Detail View Handler
+		resultDetailManager.init();
 	},
 	settings: {
 		// wird aus dem Localstorage geladen, oder Defaults werden übernommen
