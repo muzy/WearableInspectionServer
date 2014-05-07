@@ -19,6 +19,7 @@
 	},
 	"menu": {
 		"edit":"Inspektionen bearbeiten",
+		"result":"Inspektionsergebnisse",
 		"main":"Hauptmenü"
 	},
 	"settings": {
@@ -88,5 +89,21 @@
 			"range":"Rückmeldewert aus Wertebereich",
 			"string":"Zeichenketten Rückmeldewert"
 		}
+	},
+	"resultpage": {
+		"choosedocument":"Bitte ein Dokument wählen",
+		"chooseInspection":"Bitte wählen Sie einen Inspektionsknoten",
+		"executedon":"Ausgeführt am",
+		"inspectionoverview":"Inspektionsübersicht",
+		"noexecutions":"Keine Rückmeldungen vorhanden",
+		"response":"Rückmeldung"
+	},
+	"resultdetailpage": {
+		"description":"Beschreibung",
+		"false":"falsch",
+		"nodescription":"keine Beschreibung",
+		"novalue":"kein Wert angegeben",
+		"true":"wahr",
+		"value":"Wert"
 	}
 }

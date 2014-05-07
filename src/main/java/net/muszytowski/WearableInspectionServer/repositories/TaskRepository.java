@@ -3,7 +3,6 @@ package net.muszytowski.WearableInspectionServer.repositories;
 import java.util.List;
 
 import net.muszytowski.WearableInspectionServer.items.GenericTask;
-import net.muszytowski.WearableInspectionServer.items.InspectionTree;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

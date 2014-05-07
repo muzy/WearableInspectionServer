@@ -7,7 +7,6 @@ import java.util.Random;
 import net.muszytowski.WearableInspectionServer.items.BooleanTask;
 import net.muszytowski.WearableInspectionServer.items.DateTask;
 import net.muszytowski.WearableInspectionServer.items.FloatTask;
-import net.muszytowski.WearableInspectionServer.items.GenericTask;
 import net.muszytowski.WearableInspectionServer.items.InspectionTree;
 import net.muszytowski.WearableInspectionServer.items.IntegerTask;
 import net.muszytowski.WearableInspectionServer.items.ListOption;

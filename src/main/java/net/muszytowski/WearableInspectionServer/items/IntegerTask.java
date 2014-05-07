@@ -29,6 +29,4 @@ public class IntegerTask extends GenericTask {
 	public void setValue(Integer value) {
 		this.value = value;
 	}
-	
-	
 }

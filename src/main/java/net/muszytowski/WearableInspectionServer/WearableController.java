@@ -72,7 +72,6 @@ public class WearableController {
 		return (result.isEmpty())?null : result.get(0);
 	}
 	
-	
 	/**
 	 * Gets a task (by ID)
 	 * @param long
@@ -82,7 +81,7 @@ public class WearableController {
 	public @ResponseBody
 	GenericTask getTask(
 			@RequestParam(value = "Task", required = true) Long id) {
-		return taskRepository.findOne(id);
+			return inspectionTreeRepository.findTask(id);
 	}
 	
 	/**
